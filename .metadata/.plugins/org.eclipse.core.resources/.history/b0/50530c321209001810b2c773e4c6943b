@@ -1,0 +1,57 @@
+import java.util.Arrays;
+import java.util.Scanner;
+
+class ArraySort {
+    public static void main(String args[] ) throws Exception {
+        int n;
+        Scanner s = new Scanner(System.in);
+        int t = s.nextInt(), k=0;
+        while(t!=0)
+        {
+            n = s.nextInt();
+            int a[] = new int[n];
+            for (int i = 0; i < n; i++) 
+            {
+                a[i] = s.nextInt();
+            }
+            int arr[] = a;
+            int res2=0;
+            Arrays.sort(arr, 0, n);
+            for(int i=n-1;i>=0;i--)
+            {
+                int res=0, res1=0;
+                int temp[] = a;
+                for(int j=0;j<n;j++)
+                {
+                    if(arr[i]!=0)
+                    temp[j] = temp[j]/arr[i];
+                }
+                for(int j=0;j<n;j++)
+                {
+                    if(temp[j]>=1)
+                    {
+                        res++;
+                    }
+                    else
+                    {
+                        if(res>=res1)
+                        {
+                            res1 = res;
+                            res=0;
+                        }
+                    }
+                }
+                if(res1*a[i]>=res2)
+                {
+                    res2 = res1*arr[i];
+                    k=i;
+                    
+                }
+            }
+            System.out.println(arr[k]);
+            System.out.println(res2);
+            t=t-1;
+        }
+
+    }
+}

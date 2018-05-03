@@ -1,0 +1,38 @@
+
+import java.util.*;
+class TestClass {
+    public static void main(String args[] ) throws Exception {
+        Scanner s = new Scanner(System.in);
+        int T = s.nextInt();
+        int turn = 1;
+        while(T!=0)
+        {
+            String str = new String();
+            while(str.length()!=0)
+            {
+                String newString = "";
+                char b = str.charAt(0);
+                if(turn==1)
+                {
+                    newString = str.substring(0, str.indexOf(b))+""+str.substring(str.indexOf(b)+1);
+                    turn =2;
+                }
+                else if(turn ==2)
+                {
+                    newString = str.substring(0, str.indexOf(b))+""+str.substring(str.indexOf(b)+1);
+                    turn = 1;
+                }
+                str = newString;
+            }
+            if(turn==1)
+                System.out.println("Player1");
+            else
+                System.out.println("Player2");
+            T=T-1;
+        }
+
+
+        // Write your code here
+
+    }
+}
